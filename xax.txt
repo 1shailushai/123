@@ -1,1 +1,108 @@
-afdsf
+import math
+
+# Функция для проверки ввода вещественного числа
+def validate_number(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
+# Функция для проверки ввода целого числа
+def validate_integer(num):
+    try:
+        int(num)
+        return True
+    except ValueError:
+        return False
+
+while True:
+    print("Выберите операцию:")
+    print("1. Сложение")
+    print("2. Вычитание")
+    print("3. Умножение")
+    print("4. Деление")
+    print("5. Возведение в степень")
+    print("6. Квадратный корень")
+    print("7. Факториал")
+    print("8. Синус")
+    print("9. Косинус")
+    print("10. Тангенс")
+    print("0. Выход")
+
+    choice = input("Введите номер операции: ")
+
+    if not validate_integer(choice):
+        print("Некорректный ввод!")
+        continue
+
+    choice = int(choice)
+
+    if choice == 0:
+        break
+
+    if choice < 6:
+        num1 = input("Введите первое число: ")
+        num2 = input("Введите второе число: ")
+
+        if not validate_number(num1) or not validate_number(num2):
+            print("Некорректный ввод чисел!")
+            continue
+
+        num1 = float(num1)
+        num2 = float(num2)
+
+    elif choice == 6:
+        num1 = input("Введите число для извлечения квадратного корня: ")
+
+        if not validate_number(num1):
+            print("Некорректный ввод числа!")
+            continue
+
+        num1 = float(num1)
+
+    elif choice == 7:
+        num1 = input("Введите число для вычисления факториала: ")
+
+        if not validate_integer(num1):
+            print("Некорректный ввод числа!")
+            continue
+
+        num1 = int(num1)
+
+    elif choice == 8:
+        num1 = input("Введите угол в градусах: ")
+
+        if not validate_number(num1):
+            print("Некорректный ввод числа!")
+            continue
+
+        num1 = float(num1)
+
+    if choice == 1:
+        result = num1 + num2
+    elif choice == 2:
+        result = num1 - num2
+    elif choice == 3:
+        result = num1 * num2
+    elif choice == 4:
+        if num2 == 0:
+            print("Деление на 0 невозможно!")
+            continue
+        result = num1 / num2
+    elif choice == 5:
+        result = num1 ** num2
+    elif choice == 6:
+        result = math.sqrt(num1)
+    elif choice == 7:
+        result = math.factorial(num1)
+    elif choice == 8:
+        result = math.sin(math.radians(num1))
+    elif choice == 9:
+        result = math.cos(math.radians(num1))
+    elif choice == 10:
+        result = math.tan(math.radians(num1))
+
+    print("Результат: ", result)
+    
+    print
